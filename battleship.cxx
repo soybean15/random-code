@@ -45,8 +45,8 @@ void finalScore(){
 	cout<<"Miss: "<<miss<<endl;
 	cout<<"Score: "<<score<<endl;
 
-    accuracy =((float)hit/(float)atk)*100;
-    cout<<"Accuracy: "<<accuracy<<"%";
+    	accuracy =((float)hit/(float)atk)*100;
+    	cout<<"Accuracy: "<<accuracy<<"%";
 }
 
 void generateLetter(){
@@ -66,48 +66,42 @@ void deployShip(int r, int c, int shipPos, int j){
 
 	//vert
 	if(shipPos==1){
-
+		
 		pos= row[r];
 		start= col[c];
 		end=start+12;
 
 		char block = 1;
 		for(int i=start;i <end;i+=4){
-	    if(j==0){
-	    	block='1';
-
-	    }
-	    else if(j==1){
-	    	block='2';
-
-	    }
-	    else if(j==2){
-	    	block='3';
-
-	    }
-		board[pos][i]=block;
-
+	   		if(j==0){
+	    			block='1';
+			}
+	    		else if(j==1){
+	    			block='2';
+			}
+	  		else if(j==2){
+	    			block='3';
+			}
+			board[pos][i]=block;
 		}
 	}else
 	{//horizontal
-        char block=1;
-
-	    pos =col[c];
-	    start=row[r];
+        	char block=1;
+		pos =col[c];
+	   	start=row[r];
 		end=start+6;
 
 		for(int i=start;i <end;i+=2){
-            if(j==0){
-                block='1';
-            }
-            else if(j==1){
-                block='2';
-            }
-            else if(j==2){
-                block='3';
-            }
-            board[i][pos]=block;
-
+            		if(j==0){
+               			block='1';
+            		}
+            		else if(j==1){
+               			block='2';
+            		}
+           		else if(j==2){
+                		block='3';
+			}
+            		board[i][pos]=block;
 		}
 	}
 
@@ -119,7 +113,7 @@ void prepareShip(){
 
 	//prepare 3 ships
 	while(i<3){
-    //generate ship pos: 1=vert, 2=hori
+   	//generate ship pos: 1=vert, 2=hori
 	int shipPos = rand() % (2+1-1)+1;
 
 	int r ;
@@ -145,7 +139,7 @@ void prepareShip(){
 	     	c=rand()%(6+1-4)+4;
 	     }else if(i==2){
 	     	r=4;
-            c=rand()%(3+1-0)+0;
+            	c=rand()%(3+1-0)+0;
 	     }
 	}
 
@@ -182,23 +176,18 @@ void generateBoard(){
 	prepareShip();
 	//GenerateShip();
 	scoreBoard();
-    generateLetter();
-    int x=1;
-    for(int i=0; i<15; i++){
+   	generateLetter();
+   	int x=1;
+	
+    	for(int i=0; i<15; i++){
 		for(int j=0; j<30; j++){
-
-            cout<<board2[i][j];
-
+			cout<<board2[i][j];
 		}
-		if(i%2!=0){
-		cout<<x++;
+			if(i%2!=0){
+				cout<<x++;
+			}
+			cout<<endl;
 		}
-		cout<<endl;
-
-	}
-
-
-
 }
 
 void showBoard(){
@@ -208,13 +197,12 @@ void showBoard(){
 	for(int i=0; i<15; i++){
 		for(int j=0; j<30; j++){
             cout<<board2[i][j];
-
 		}
 
-        if(i%2!=0){
-            cout<<x++;
+        	if(i%2!=0){
+      			cout<<x++;
 		}
-		cout<<endl;
+	cout<<endl;
 	}
 
 
@@ -244,7 +232,7 @@ void generateAttack(string attack){
 				s1="Destroyed";
 			}
 		}
-        else if(board[r][c]=='2'){
+      		else if(board[r][c]=='2'){
 			ship2--;
 			s2=target;
 			if(ship2==0){
@@ -263,19 +251,19 @@ void generateAttack(string attack){
 		board2[r][c]='x';
 		hit++;
 		score+=10;
-    }else{
-    	s1="";
-    	s2="";
-    	s3="";
-    	if(ship1==0){
-				s1="Destroyed";
-			}
-   	if(ship2==0){
-				s2="Destroyed";
+   	}else{
+    		s1="";
+   	 	s2="";
+ 	   	s3="";
+    		if(ship1==0){
+			s1="Destroyed";
+		}
+   		if(ship2==0){
+			s2="Destroyed";
 		}
 		if(ship3==0){
-				s3="Destroyed";
-			}
+			s3="Destroyed";
+		}
 		remarks="MISS!!";
 		board2[r][c]='-';
 		miss++;
@@ -287,7 +275,7 @@ void generateAttack(string attack){
 
 
 bool checkBoard(string str){
-    
+
     int column = str[0]-96;
     int row = str[1]-48;
 
@@ -302,7 +290,6 @@ bool checkBoard(string str){
  	}else{
  	    return false;
  	}
-
 }
 
 bool invalidAttack(string str){
@@ -329,7 +316,7 @@ while(true){
   	cout<<"Invalid Move"<<endl;
   	cout<<"Try again: ";
   }else{
-     
+
 
       if(checkBoard(attack)){
 
@@ -338,7 +325,8 @@ while(true){
         cout<<"Try again: ";
 
       }else{
-          system("clear");
+          //system("clear");//mobile
+          system("CLS");//desktop
           generateAttack( attack);
           atk++;
           showBoard();
