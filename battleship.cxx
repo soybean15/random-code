@@ -286,20 +286,6 @@ void generateAttack(string attack){
 }
 
 
-int getrow(string attack){
-    int r = attack[0]-96;
-
-    int _row[]={1,3,5,7,9,11,13};
-    return _row[r-1];
-}
-int getcolumn(string attack){
-
-    int c = attack[1]-48;
-    int _col[]={2,6,10,14,18,22,26};
-
-	return _col[c-1];
-
-}
 bool checkBoard(string str){
     
     int column = str[0]-96;
@@ -314,7 +300,6 @@ bool checkBoard(string str){
  	if(board2[r][c]!=' '){
         return true;
  	}else{
- 	    cout<<"false";
  	    return false;
  	}
 
