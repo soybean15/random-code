@@ -1,47 +1,6 @@
+from Inventory import Item
+from User import Users
 import datetime
-class Users:
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
-
-    def check_user(self, username, password):
-        return self.username == username and self.password == password
-
-class Item:
-    def __init__(self, item, type, qty, price):
-        self.item = item
-        self.qty = qty
-        self.price = price
-        self.type = type
-        self.total = price*qty
-
-    def get_name(self):
-        return self.item
-
-
-    def print_receipt(self):
-        qtystr = int(self.qty)
-        totalprice = self.qty * self.price
-        itemstr = str(qtystr)+"pcs "'%-16s' % self.item
-
-        pricestr ='%-4s' % int(self.price)
-        totalpricestr =str(totalprice)
-
-        print(itemstr,pricestr, totalpricestr)
-
-    def print_item(self, index):
-        totalprice = self.qty * self.price
-        itemstr = str(index) + "." + '%-20s' % self.item
-        typestr = "|  " + '%-10s' % self.type
-        qtystr = "|" + '%-3s' % int(self.qty)
-        pricestr = "|" + '%-6s' % self.price
-        totalpricestr = "|" + str(totalprice)
-
-        print(itemstr, typestr, qtystr, pricestr, totalpricestr)
-
-
-    def get_total(self):
-        return self.total
 
 
 def add_user():
@@ -165,10 +124,13 @@ def point_of_sales_page():
                         print("Invalid Input")
                 else:
                     qty = int(input("Quantity "))
-                    show_inventory()
+
                     print()
                     print()
-                    add_to_cart(option, qty)
+                    if items[option-1].qty <qty:
+                        print("Insufficient Stock")
+                    else:
+                        add_to_cart(option, qty)
         except:
             print("Invalid Item Try again")
 
@@ -204,6 +166,7 @@ def print_receipt():
     print()
     print()
     print()
+    next = input("Enter any key to continue")
 
 
 def get_total():
@@ -322,6 +285,9 @@ def inventory_delete():
 
 
 def add_to_cart(option, qty):
+
+    items[option-1].qty =  items[option-1].qty - qty
+    show_inventory()
     cart.append(Item(items[option - 1].item, items[option - 1].type, float(qty), items[option - 1].price))
     cart_table('%-45s' % "[0]View Option")
 
@@ -332,3 +298,5 @@ def main_menu():
 
 
 main_menu()
+
+
