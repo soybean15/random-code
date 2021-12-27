@@ -392,7 +392,7 @@ public class HangMan {
 
         if (option==1){
             String randomWord = generateRandomWord();
-            String hidden = generateAnswer(randomWord);
+            String hidden = generateAnswer(randomWord);//generate masked word("*")
             board.printHangman(frame2, count);
             board.updateBoard(frame2, hidden, 0);
             while(count<7) {
@@ -418,14 +418,16 @@ public class HangMan {
                 }
 
                 String  letter = hangMan.prompt("Enter a letter: ");
-
+                
+                //check if letter already pick or doesn't exist
                 if(checkLetter(hidden, letter.charAt(0)) || !checkLetter(randomWord, letter.charAt(0))){
                     count++;
                     board.printHangman(frame2, count);
                 }else{
                     score +=10;
                 }
-
+                
+                //show result
                 hidden = returnResult(letter.charAt(0), hidden, randomWord);
 
                 board.updateBoard(frame2, hidden, score);
