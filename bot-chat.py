@@ -64,7 +64,6 @@ def generate_response(input_message):
 
 def get_response(input_message):
     split_message = re.split(r"[-;,.\s]\s*", input_message)
-
     return generate_response(split_message)
 
 
