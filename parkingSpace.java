@@ -191,6 +191,7 @@ public class ParkingSpace {
         for(String typestr:Vehicle.typeArr){
             System.out.println(count+". "+typestr);
             count++;
+       System.out.println("Enter -1 to back to main menu");
         }
     }
 
