@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Bin {
 
@@ -135,9 +137,6 @@ class Vehicle {
     }
 }
 
-
-import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class ParkingSpace {
