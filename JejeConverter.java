@@ -71,8 +71,7 @@ class JejeConverter {
         return sc.nextLine();
     }
     void start(){
-        createAlphabet();
-        addJejeMessage();
+        
         String message = input("Message: ");
         System.out.println("C0nV3rT3d tO j3j3: "+convertToJeje(splitMessage(message)));
     }
@@ -85,6 +84,8 @@ public class Main {
 
     public static void main(String[] args) {
 	JejeConverter jeje = new JejeConverter();
+        jeje.createAlphabet();
+        jeje.addJejeMessage();
 
     while (true)
     jeje.start();
