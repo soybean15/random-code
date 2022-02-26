@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class JejeConverter {
+class JejeConverter {
     Scanner sc = new Scanner(System.in);
     HashMap<Character, String[]> jejeMessage = new HashMap<>();
     List<Character> alphabet = new ArrayList<>();
@@ -73,8 +73,8 @@ public class JejeConverter {
     void start(){
         createAlphabet();
         addJejeMessage();
-        String message = input("Enter your Message: ");
-        System.out.println(convertToJeje(splitMessage(message)));
+        String message = input("Message: ");
+        System.out.println("C0nV3rT3d tO j3j3: "+convertToJeje(splitMessage(message)));
     }
 }
 
