@@ -155,19 +155,18 @@ public class TicTactoe{
         board.printBoard();
         while(board.availableMove.length>0){
             System.out.println("index:"+index);
-            System.out.println("Player "+(player[index].number));
-
-            System.out.println("Select move:");
+           
             int move = 0;
             if(player[index].number == 2){
                 move = player[index].generateMove(board.availableMove);
                 p1move.add(move);
             }else{
-                do{
-                    move = sc.nextInt();
-                    System.out.println("Already Picked");
+                
+                    
+                while(!checkMove(board.availableMove, move)){
                     System.out.println("Select Move:");
-                }while(!checkMove(board.availableMove, move));
+                    move = sc.nextInt();
+                }
 
 
                 p2move.add(move);
