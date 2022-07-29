@@ -103,7 +103,7 @@ class Board{
     }
 }
 
-public class TicTactoe{
+ class TicTactoe{
     int[][] winningMove ={{1,2,3},{4,5,6},{7,8,9},{1,4,7},{2,5,8},{3,6,9},{1,5,9},{3,5,7}};
 
     int[] row = {0,0,0,1,1,1,2,2,2};
@@ -154,15 +154,15 @@ public class TicTactoe{
         int index =0;
         board.printBoard();
         while(board.availableMove.length>0){
-            System.out.println("index:"+index);
-           
+
+
             int move = 0;
             if(player[index].number == 2){
                 move = player[index].generateMove(board.availableMove);
                 p1move.add(move);
             }else{
-                
-                    
+
+
                 while(!checkMove(board.availableMove, move)){
                     System.out.println("Select Move:");
                     move = sc.nextInt();
@@ -172,7 +172,7 @@ public class TicTactoe{
                 p2move.add(move);
             }
 
-
+            System.out.println("Player :"+(index+1));
 
             board.updateBoard(row[move-1], col[move-1], player[index].piece);
             board.printBoard();
@@ -201,19 +201,12 @@ public class TicTactoe{
 
 
 
-
-
-
     }
     public static void main(String[] args){
 
         TicTactoe tictactoe = new TicTactoe();
 
         tictactoe.start();
-        //Bot bot = new Bot(2,'0');
-
-        //System.out.println("Original Array: "+Arrays.toString(bot.availableMove));
-        //bot.availableMove = bot.updateAvailableMove(2);
-        //System.out.println("Updated Array: "+Arrays.toString(bot.availableMove));
+       
     }
 }
